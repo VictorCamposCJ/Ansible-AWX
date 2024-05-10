@@ -116,36 +116,3 @@
           name: maria
           state: import
           target: /backup/backup-file.sql
-  
-/*
-- name: Cambiar la URL del sitio en la base de datos de WordPress
-
-- name:    Instala el paquete python-mysqldb
-  apt:
-  name: python-mysqldb
-  state: present
-- name: Crea el archivo SQL
-  copy:
-  content: |
-          USE nombre_de_tu_base_de_datos;
-          UPDATE wp_options SET option_value='http://192.168.10.80' WHERE option_name='siteurl' OR option_name='home';
-  dest: /tmp/commands.sql
-
-    - name: Importar base de datos
-  mysql_db:
-    login_user: root
-    login_password: Viewnext
-    name: maria
-    state: import
-    target: /tmp/commands.sql
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-
-- name: Ejecutar archivo SQL
-  command: mysql -u root -p"Viewnext" maria < /tmp/commands.sql
-
-- name: Eliminar archivo SQL temporal
-  file:
-    path: /tmp/commands.sql
-    state: absent
-*\
