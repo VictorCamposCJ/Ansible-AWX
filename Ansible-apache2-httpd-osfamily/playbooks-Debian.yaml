@@ -34,7 +34,7 @@
 
 - name: Deshabilitar módulo SELinux
   copy:
-      src: /home/vagrant/src/recursos/config
+      src: /home/vagrant/VictorCamposCJ/victor/Ansible-AWX/Ansible-apache2-httpd-osfamily/recursos/config
       dest: /etc/selinux/config
       owner: root
       group: root
