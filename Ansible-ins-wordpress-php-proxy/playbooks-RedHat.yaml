@@ -39,11 +39,11 @@
           - php-bcmath
         state: latest
 
-- name: Reiniciar modulo php-fpm si está instalado
+- name: Reiniciar modulo php*-fpm si está instalado
   service:
           name: php-fpm
           state: restarted
-  when: ansible_facts['services']['php-fpm'] is defined
+  when: ansible_facts['services']['php*-fpm'] is defined
 
 - name: Permitir tráfico HTTP a través del firewall
   command: 
@@ -74,7 +74,7 @@
 
 - name: Establecer configuración de Wordpress
   template:
-          src: /home/vagrant/src/recursos/wp-config.php
+          src: recursos/wp-config.php
           dest: /var/www/wordpress/wp-config.php
           owner: apache
           group: apache
@@ -82,7 +82,7 @@
 
 - name: Importar archivo wordpress.conf(proxy)
   template:
-          src: /home/vagrant/src/recursos/wordpress.conf.j2
+          src: recursos/wordpress.conf.j2
           dest: /etc/httpd/conf.d/wordpress.conf
           owner: root
           group: root

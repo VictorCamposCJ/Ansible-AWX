@@ -28,9 +28,9 @@
 
 - name: Reiniciar modulo php-fpm si está instalado
   service:
-          name: php7.3-fpm
+          name: php*-fpm
           state: restarted
-  when: ansible_facts['services']['php7.3-fpm'] is defined
+  when: ansible_facts['services']['php*-fpm'] is defined
 
 - name: Permitir tráfico HTTP a través del firewall
   command: 
@@ -61,7 +61,7 @@
 
 - name: Establecer configuración de Wordpress
   template:
-          src: /home/vagrant/src/recursos/wp-config.php
+          src: recursos/wp-config.php
           dest: /var/www/wordpress/wp-config.php
           owner: www-data
           group: www-data
@@ -69,7 +69,7 @@
 
 - name: Importar archivo wordpress.conf(proxy)
   template:
-          src: /home/vagrant/src/recursos/000-default.conf.j2
+          src: recursos/000-default.conf.j2
           dest: /etc/apache2/sites-available/000-default.conf
           owner: root
           group: root
