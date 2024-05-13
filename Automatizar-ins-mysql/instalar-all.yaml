@@ -2,7 +2,7 @@
 
 
 ---
-- hosts: dual
+- hosts: dual-mysql
   gather_facts: yes
   become: yes
   tasks:
