@@ -38,7 +38,7 @@
 
 - name: Establecer configuración Mariadb CentOS
   template:
-          src: /home/vagrant/src/recursos/50-server-centos.cnf
+          src: recursos/50-server-centos.cnf
           dest: /etc/my.cnf.d/mariadb-server.cnf
           owner: root
           group: root
@@ -109,7 +109,7 @@
 
 - name: Copiar backup a servidor remoto CentOS
   template:
-          src: /home/vagrant/src/recursos/backup-file.sql
+          src: recursos/backup-file.sql
           dest: /backup/
 
 #       <----------------------- RESTAURACIÓN DE LA BASE DE DATOS ---------------------->

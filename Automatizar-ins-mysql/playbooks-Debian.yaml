@@ -38,7 +38,7 @@
 
 - name: Establecer configuración Mariadb Debian
   template:
-          src: /home/vagrant/src/recursos/50-server-debian.cnf
+          src: recursos/50-server-debian.cnf
           dest: /etc/mysql/mariadb.conf.d/50-server.cnf
           owner: root
           group: root
@@ -104,7 +104,7 @@
 
 - name: Copiar backup a servidor remoto Debian
   template:
-          src: /home/vagrant/src/recursos/backup-file.sql
+          src: recursos/backup-file.sql
           dest: /backup/
 
 #       <----------------------- RESTAURACIÓN DE LA BASE DE DATOS ---------------------->
