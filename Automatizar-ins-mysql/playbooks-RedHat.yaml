@@ -53,7 +53,7 @@
 
 # Creación de la base de datos de wordpress
 - name: crear base de datos
-  community.mysql.mysql_db:
+  mysql_db:
     name: maria
     login_user: root
     login_password: Viewnext
