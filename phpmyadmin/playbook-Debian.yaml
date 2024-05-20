@@ -1,0 +1,72 @@
+---
+
+   - name: Actualizar paquetes.
+     
+     apt:
+      
+        update_cache: yes
+
+
+          #- name: Instalar repositorios epel-release.
+
+          #apt:
+
+          #name:
+
+          #- epel-release
+
+          #state: present
+
+
+   - name: Instalar phpmyadmin.
+
+     apt:
+
+        name:
+
+          - phpmyadmin
+
+        state: present
+
+
+   - name: importar archivo de configurción.
+
+     template:
+
+            src: recursos/phpmyadmin.conf
+
+            dest: /etc/apache2/conf-available/phpmyadmin.conf
+
+            owner: root
+
+            group: root
+
+            mode: '0755'
+
+
+              # - name: Recargar apache2.
+
+     #service:
+
+        #name: apache2
+
+             #state: restart
+
+   - name: Recargar apache2.
+     service:
+       name: apache2
+       state: restarted
+
+
+   - name: Recargar phpmyadmin.
+     command: a2enconf phpmyadmin
+
+   - name: Recargar apache2.
+     service:
+       name: apache2
+       state: restarted
+
+   - name: Recargar masriadb.
+     service:
+       name: mariadb
+       state: restarted    

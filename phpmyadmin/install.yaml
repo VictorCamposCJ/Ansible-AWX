@@ -1,0 +1,10 @@
+---
+
+    - name: instalar phpmyadmin
+      hosts: phpadmin
+      become: yes
+      gather_facts: yes
+      tasks:
+
+         - name: inluir playbook
+           include_tasks: "playbook-{{ ansible_os_family }}.yaml"
